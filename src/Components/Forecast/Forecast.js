@@ -1,4 +1,5 @@
 import React ,{useState, useEffect } from 'react'
+import axios from 'axios'
 
  const Forecast = ()=>{
     const key = 'APP-KEY';
@@ -10,7 +11,7 @@ import React ,{useState, useEffect } from 'react'
 
     },[])
     return (
-        
+
     )
  }
  export default Forecast
