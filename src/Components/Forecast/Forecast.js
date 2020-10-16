@@ -1,5 +1,6 @@
 import React ,{useState, useEffect } from 'react'
 import axios from 'axios'
+import './Forecast.css'
 
  const Forecast = ()=>{
     const key = 'ce06c3f81e1990453b38833c502026cb';
@@ -36,11 +37,29 @@ import axios from 'axios'
             })
         }
     },[])
+   
         
                 return (
                 <div>
-                    {city}
-                    <img src={"http://openweathermap.org/img/wn/" + icon + "@2x.png"} />
+                     <div className="name">
+        {city},{country}
+    </div>
+    <div className="weather-icon"> 
+    <img src={"http://openweathermap.org/img/wn/" + icon + "@2x.png"} />
+            </div>
+    <div className="weather">
+        <div className="main-weather">
+            <span className="temperature">{temp}</span>
+        </div>
+        <div className="minmax">
+            <span className="min-max">Min {min}<i className="wi wi-celsius"/><br/>Max {max}<i className="wi wi-celsius"/></span>
+        </div>
+    </div>
+    
+    <div className="condition">
+            {condition}
+    </div>
+
                 </div>
             )
         }

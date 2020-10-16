@@ -1,0 +1,33 @@
+.name{
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .weather-icon{
+    height: 40vh;
+    font-size: 25vh;
+    text-align: center;
+   
+  }
+  .weather{
+    display:flex;
+    justify-content: space-around;
+    flex-direction: row;
+    
+  }
+  .main-weather{
+    font-size: 10vh;
+  }
+  .minmax{
+    font-size: 2.5vh;
+    display: flex;
+    align-items: center;
+  }
+  
+  .condition{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:2.4vh;
+    font-weight: bold;
+  }
