@@ -31,7 +31,6 @@ import './Forecast.css'
                 setCondition(response.data.weather[0].description)
                 setIcon(response.data.weather[0].icon)
                   
-                 
                 })
                 .then(err => console.log(err))
             })
