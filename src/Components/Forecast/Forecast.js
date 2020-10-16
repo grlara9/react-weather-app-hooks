@@ -4,9 +4,14 @@ import axios from 'axios'
  const Forecast = ()=>{
     const key = 'ce06c3f81e1990453b38833c502026cb';
     const [location, setLocation]=useState('')
-    const [data, setData]=useState({})
-    const[city, setCity]=useState('')
     
+    const[city, setCity]=useState('')
+    const [icon, setIcon]=useState('')
+    const [country, setCountry] = useState('')
+    const [temp, setTemp]=useState('')
+    const [max, setMax]=useState('')
+    const [min, setMin]=useState('')
+    const [condition, setCondition]=useState('')
     useEffect(()=> {
         if(navigator.geolocation){
             navigator.geolocation.getCurrentPosition(position =>{
@@ -17,8 +22,13 @@ import axios from 'axios'
                 .then(response => {
                 console.log(response)
                 
-                  setCity(response.data.name)
-                  
+                setCity(response.data.name)
+                setCountry(response.data.sys.country)
+                setTemp( response.data.main.temp)
+                setMax( response.data.main.temp_max)
+                setMin(response.data.main.temp_min)
+                setCondition(response.data.weather[0].description)
+                setIcon(response.data.weather[0].icon)
                   
                  
                 })
@@ -30,6 +40,7 @@ import axios from 'axios'
                 return (
                 <div>
                     {city}
+                    <img src={"http://openweathermap.org/img/wn/" + icon + "@2x.png"} />
                 </div>
             )
         }
