@@ -41,6 +41,13 @@ import './Forecast.css'
         var celsius = Math.floor(k-273.15);
         return celsius;
       }
+
+      covertToFahrenheit = (k) =>{
+        var cel = k - 273;
+        var far = Math.floor(cel * (9/5) + 32)
+        return far;
+      }
+    
         
                 return (
                 <div>
