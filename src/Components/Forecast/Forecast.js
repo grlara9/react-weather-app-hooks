@@ -37,6 +37,10 @@ import './Forecast.css'
         }
     },[])
    
+    convertKelvinToCelsius = (k) => {
+        var celsius = Math.floor(k-273.15);
+        return celsius;
+      }
         
                 return (
                 <div>
