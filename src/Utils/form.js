@@ -2,10 +2,10 @@ import React from 'react'
 
 const Form = (props) => {
     return (
-        <form className="mt-2" onSubmit={getWeather}>
+        <form className="mt-2" onSubmit={props.getWeather}>
             <div className="row">
                 <div className="col">
-                    <input onChange={(e) => setQuery(e.target.value)} 
+                    <input  
                     name="city" 
                     type="text"   
                     placeholder="Search by city..." />
