@@ -9,7 +9,7 @@ import { covertToFahrenheit } from '../../Utils/functions';
  const Forecast = ()=>{
    const KEY_API='ce06c3f81e1990453b38833c502026cb';
     const [location, setLocation]=useState('')
-  
+    const [inputText, setInputText] = useState('')
     const[city, setCity]=useState('')
     const [icon, setIcon]=useState('')
     const [country, setCountry] = useState('')
@@ -42,13 +42,10 @@ import { covertToFahrenheit } from '../../Utils/functions';
         }
     },[])
    
-    const getWeather =(e)=>{
-        const city = e.target.value
-        console.log(city)
-    }
+  
    return (
        <div>
-        <Form getWeather={getWeather}/>
+        <Form setInputText={setInputText}/>
         <div className="name">
             {city},{country}
         </div>
