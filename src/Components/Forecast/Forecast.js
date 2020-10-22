@@ -1,6 +1,7 @@
 import React ,{useState, useEffect } from 'react'
 import axios from 'axios'
 import Form from '../../Utils/form'
+import DisplayWeather from '../../Utils/displayWeather'
 import './Forecast.css'
 
 
@@ -46,32 +47,28 @@ import { covertToFahrenheit } from '../../Utils/functions';
    const getWeather = (e)=>{
         e.preventDefault()
         axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${inputText}&appid=${KEY_API}`)
-        
         .then(response=> 
-            setData(response)
+            setData({
+                city: response.data.name,
+                country: response.data.sys.country,
+                temperature: covertToFahrenheit(response.data.main.temp),
+                max: covertToFahrenheit(response.data.main.temp_max),
+                min: covertToFahrenheit(response.data.main.temp_min),
+                condition: response.data.weather[0].description,
+                icon: response.data.weather[0].icon
+            })
         )
     }
    return (
        <div>
         <Form setInputText={setInputText} getWeather={getWeather}/>
+        <DisplayWeather 
+        city= {data.city}
+        country={data.country}
+        temperature={data.temperature}
 
-        <div className="name">
-            {city},{country}
-        </div>
-        <div className="weather-icon"> 
-            <img src={"http://openweathermap.org/img/wn/" + icon + "@2x.png"} />
-        </div>
-        <div className="weather">
-            <div className="main-weather">
-                <span className="temperature">{temp}</span>
-            </div>
-            <div className="minmax">
-                <span className="min-max">Min {min}<i className="wi wi-celsius"/><br/>Max {max}<i className="wi wi-celsius"/></span>
-            </div>
-        </div>
-        <div className="condition">
-            {condition}
-        </div>
+        />
+        
     </div>
     )
 }
