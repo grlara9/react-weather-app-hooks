@@ -8,8 +8,9 @@ import { covertToFahrenheit } from '../../Utils/functions';
 
  const Forecast = ()=>{
    const KEY_API='ce06c3f81e1990453b38833c502026cb';
-    const [location, setLocation]=useState('')
+    
     const [inputText, setInputText] = useState('')
+    const [data, setData]= useState({})
     const[city, setCity]=useState('')
     const [icon, setIcon]=useState('')
     const [country, setCountry] = useState('')
@@ -42,10 +43,18 @@ import { covertToFahrenheit } from '../../Utils/functions';
         }
     },[])
    
-  
+   const getWeather = (e)=>{
+        e.preventDefault()
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${inputText}&appid=${KEY_API}`)
+        
+        .then(response=> 
+            setData(response)
+        )
+    }
    return (
        <div>
-        <Form setInputText={setInputText}/>
+        <Form setInputText={setInputText} getWeather={getWeather}/>
+
         <div className="name">
             {city},{country}
         </div>
