@@ -12,14 +12,7 @@ import { covertToFahrenheit } from '../../Utils/functions';
     
     const [inputText, setInputText] = useState('')
     const [data, setData]= useState({})
-    const[city, setCity]=useState('')
-    const [icon, setIcon]=useState('')
-    const [country, setCountry] = useState('')
-    const [temp, setTemp]=useState('')
-    const [max, setMax]=useState('')
-    const [min, setMin]=useState('')
-    const [condition, setCondition]=useState('')
-
+   
     useEffect(()=> {
         if(navigator.geolocation){
             navigator.geolocation.getCurrentPosition(position =>{
@@ -27,18 +20,18 @@ import { covertToFahrenheit } from '../../Utils/functions';
               
                 const api =`https://api.openweathermap.org/data/2.5/weather?lat=${ position.coords.latitude}&lon=${position.coords.longitude}&appid=${KEY_API}`;
                 axios.get(api)
-                .then(response => {
-                console.log(response)
-                
-                setCity(response.data.name)
-                setCountry(response.data.sys.country)
-                setTemp(  covertToFahrenheit(response.data.main.temp))
-                setMax(  covertToFahrenheit(response.data.main.temp_max))
-                setMin( covertToFahrenheit(response.data.main.temp_min))
-                setCondition(response.data.weather[0].description)
-                setIcon(response.data.weather[0].icon)
-                  
+                .then(response => 
+                setData({
+                    city: response.data.name,
+                    country: response.data.sys.country,
+                    temperature: covertToFahrenheit(response.data.main.temp),
+                    max: covertToFahrenheit(response.data.main.temp_max),
+                    min: covertToFahrenheit(response.data.main.temp_min),
+                    condition: response.data.weather[0].description,
+                    icon: response.data.weather[0].icon
+               
                 })
+                )
                 .then(err => console.log(err))
             })
         }
@@ -58,6 +51,7 @@ import { covertToFahrenheit } from '../../Utils/functions';
                 icon: response.data.weather[0].icon
             })
         )
+        .then(err => console.log(err))
     }
    return (
        <div>
