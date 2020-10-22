@@ -1,24 +1,24 @@
 import React from 'react'
 
-const DisplayWeather =(props)=>{
+const DisplayWeather =({city, country, icon, temperature, min, max, condition})=>{
     return (
     <React.Fragment>
     <div className="name">
-            {props.city},{props.country}
+            {city},{country}
         </div>
         <div className="weather-icon"> 
-            <img src={"http://openweathermap.org/img/wn/" + props.icon + "@2x.png"} />
+            <img src={"http://openweathermap.org/img/wn/" + icon + "@2x.png"} />
         </div>
         <div className="weather">
             <div className="main-weather">
-                <span className="temperature">{props.temperature}</span>
+                <span className="temperature">{temperature}</span>
             </div>
             <div className="minmax">
-                <span className="min-max">Min {props.min}<i className="wi wi-celsius"/><br/>Max {props.max}<i className="wi wi-celsius"/></span>
+                <span className="min-max">Min {min}<i className="wi wi-celsius"/><br/>Max {max}<i className="wi wi-celsius"/></span>
             </div>
         </div>
         <div className="condition">
-            {props.condition}
+            {condition}
         </div>
         </React.Fragment>
     )}
