@@ -66,6 +66,10 @@ import { covertToFahrenheit } from '../../Utils/functions';
         city= {data.city}
         country={data.country}
         temperature={data.temperature}
+        max={data.max}
+        min={data.min}
+        condition={data.condition}
+        icon={data.icon}
 
         />
         
