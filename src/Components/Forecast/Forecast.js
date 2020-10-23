@@ -4,10 +4,9 @@ import Form from '../../Utils/form'
 import DisplayWeather from '../../Utils/displayWeather'
 import './Forecast.css'
 
-
 import { covertToFahrenheit } from '../../Utils/functions';
 
- const Forecast = ()=>{
+const Forecast = ()=>{
    const KEY_API='ce06c3f81e1990453b38833c502026cb';
     
     const [inputText, setInputText] = useState('')
@@ -53,22 +52,19 @@ import { covertToFahrenheit } from '../../Utils/functions';
         )
         .then(err => console.log(err))
     }
-   return (
-       <div>
+return (
+    <div>
         <Form setInputText={setInputText} getWeather={getWeather}/>
         <DisplayWeather 
-        city= {data.city}
-        country={data.country}
-        temperature={data.temperature}
-        max={data.max}
-        min={data.min}
-        condition={data.condition}
-        icon={data.icon}
-
+            city= {data.city}
+            country={data.country}
+            temperature={data.temperature}
+            max={data.max}
+            min={data.min}
+            condition={data.condition}
+            icon={data.icon}
         />
-        
     </div>
-    )
-}
+)}
  export default Forecast
 

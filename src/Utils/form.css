@@ -1,0 +1,18 @@
+form{
+    display: flex;
+    grid-column: 2;
+}
+form input {
+    flex-grow: 1;
+}
+
+form input[name="city"]{
+    color:black;
+    padding: 10px;
+    border: none;
+  }
+button {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
