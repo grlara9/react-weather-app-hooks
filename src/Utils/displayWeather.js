@@ -1,4 +1,5 @@
 import React from 'react'
+import './displayWeather.css'
 
 const DisplayWeather =({city, country, icon, temperature, min, max, condition})=>{
     return (

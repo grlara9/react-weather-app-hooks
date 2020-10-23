@@ -2,7 +2,7 @@ import React ,{useState, useEffect } from 'react'
 import axios from 'axios'
 import Form from '../../Utils/form'
 import DisplayWeather from '../../Utils/displayWeather'
-import './Forecast.css'
+
 
 import { covertToFahrenheit } from '../../Utils/functions';
 
