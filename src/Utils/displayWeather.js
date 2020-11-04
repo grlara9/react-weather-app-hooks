@@ -12,15 +12,16 @@ const DisplayWeather =({city, country, icon, temperature, min, max, condition})=
             </div>
             <div className="weather">
                 <div className="main-weather">
-                <span className="temperature">{temperature}</span>
+                <span className="temperature">{temperature}&deg;</span>
             </div>
             <div className="minmax">
-                <span className="min-max">Min {min}<i className="wi wi-celsius"/><br/>Max {max}<i className="wi wi-celsius"/></span>
+                <span className="min-max">Min {min}&deg;<i className="wi wi-celsius"/><br/>Max {max}&deg;<i className="wi wi-celsius"/></span>
             </div>
             </div>
             <div className="condition">
                 {condition}
             </div>
+            
         </React.Fragment>
     )}
 export default DisplayWeather
