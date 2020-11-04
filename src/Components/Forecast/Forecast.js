@@ -5,7 +5,7 @@ import Toggler from '../../Utils/degreeToddler'
 import DisplayWeather from '../../Utils/displayWeather'
 
 
-import { covertToFahrenheit } from '../../Utils/functions';
+import { convertToFahrenheit } from '../../Utils/functions';
 
 const Forecast = ()=>{
    const KEY_API='ce06c3f81e1990453b38833c502026cb';
@@ -25,9 +25,9 @@ const Forecast = ()=>{
                 setData({
                     city: response.data.name,
                     country: response.data.sys.country,
-                    temperature: covertToFahrenheit(response.data.main.temp),
-                    max: covertToFahrenheit(response.data.main.temp_max),
-                    min: covertToFahrenheit(response.data.main.temp_min),
+                    temperature: convertToFahrenheit(response.data.main.temp),
+                    max: convertToFahrenheit(response.data.main.temp_max),
+                    min: convertToFahrenheit(response.data.main.temp_min),
                     condition: response.data.weather[0].description,
                     icon: response.data.weather[0].icon
                
@@ -45,9 +45,9 @@ const Forecast = ()=>{
             setData({
                 city: response.data.name,
                 country: response.data.sys.country,
-                temperature: covertToFahrenheit(response.data.main.temp),
-                max: covertToFahrenheit(response.data.main.temp_max),
-                min: covertToFahrenheit(response.data.main.temp_min),
+                temperature: response.data.main.temp,
+                max: response.data.main.temp_max,
+                min: response.data.main.temp_min,
                 condition: response.data.weather[0].description,
                 icon: response.data.weather[0].icon
             })
@@ -66,6 +66,7 @@ return (
             min={data.min}
             condition={data.condition}
             icon={data.icon}
+            degreeType={degreeType}
         />
     </div>
 )}

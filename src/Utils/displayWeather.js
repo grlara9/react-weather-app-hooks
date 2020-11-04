@@ -1,7 +1,9 @@
 import React from 'react'
 import './displayWeather.css'
+import { convertToFahrenheit } from './functions';
+import {  convertKelvinToCelsius } from './functions'
 
-const DisplayWeather =({city, country, icon, temperature, min, max, condition})=>{
+const DisplayWeather =({city, country, icon, temperature, min, max, condition , degreeType})=>{
     return (
         <React.Fragment>
             <div className="name">
@@ -12,7 +14,8 @@ const DisplayWeather =({city, country, icon, temperature, min, max, condition})=
             </div>
             <div className="weather">
                 <div className="main-weather">
-                <span className="temperature">{temperature}&deg;</span>
+                <span className="temperature">{degreeType === "celsius" ?  convertKelvinToCelsius(temperature) +  "°C" : convertToFahrenheit(temperature) + "°F"}</span>
+           
             </div>
             <div className="minmax">
                 <span className="min-max">Min {min}&deg;<i className="wi wi-celsius"/><br/>Max {max}&deg;<i className="wi wi-celsius"/></span>

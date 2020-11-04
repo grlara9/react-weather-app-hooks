@@ -15,7 +15,7 @@ return (
             type="radio"
             name="degree-type"
             id="celsius"
-            value="metric"
+            value="celsius"
             checked={props.degreeType === "celsius"}
             onChange={updateForecastDegree}
             />
@@ -26,9 +26,9 @@ return (
             class="form-check-input"
             type="radio"
             name="degree-type"
-            id="farenheit"
-            value="imperial"
-            checked={props.degreeType === "celsius"}
+            id="fahrenheit"
+            value="fahrenheit"
+            checked={props.degreeType === "fahrenheit"}
             onChange={updateForecastDegree}
             />
             <label class="form-check-label" for="farenheit">Farenheit</label>
