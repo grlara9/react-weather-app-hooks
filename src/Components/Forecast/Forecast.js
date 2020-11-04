@@ -1,6 +1,7 @@
 import React ,{useState, useEffect } from 'react'
 import axios from 'axios'
 import Form from '../../Utils/form'
+import Toggler from '../../Utils/degreeToddler'
 import DisplayWeather from '../../Utils/displayWeather'
 
 
@@ -11,7 +12,8 @@ const Forecast = ()=>{
     
     const [inputText, setInputText] = useState('')
     const [data, setData]= useState({})
-   
+   const [degreeType, setDegreeType]=useState('fahrenheit')
+
     useEffect(()=> {
         if(navigator.geolocation){
             navigator.geolocation.getCurrentPosition(position =>{
@@ -55,6 +57,7 @@ const Forecast = ()=>{
 return (
     <div>
         <Form setInputText={setInputText} getWeather={getWeather}/>
+        <Toggler setDegreeType={setDegreeType} degreeType={degreeType}/>
         <DisplayWeather 
             city= {data.city}
             country={data.country}
