@@ -4,6 +4,7 @@ import { convertToFahrenheit } from './functions';
 import {  convertKelvinToCelsius } from './functions'
 
 const DisplayWeather =({city, country, icon, temperature, min, max, condition , degreeType})=>{
+
     return (
         <React.Fragment>
             <div className="name">

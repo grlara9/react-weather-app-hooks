@@ -25,9 +25,9 @@ const Forecast = ()=>{
                 setData({
                     city: response.data.name,
                     country: response.data.sys.country,
-                    temperature: convertToFahrenheit(response.data.main.temp),
-                    max: convertToFahrenheit(response.data.main.temp_max),
-                    min: convertToFahrenheit(response.data.main.temp_min),
+                    temperature: response.data.main.temp,
+                    max: response.data.main.temp_max,
+                    min: response.data.main.temp_min,
                     condition: response.data.weather[0].description,
                     icon: response.data.weather[0].icon
                
