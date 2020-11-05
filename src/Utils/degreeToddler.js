@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './degreeToddler.css'
 const Toggler =(props)=>{
 
     const updateForecastDegree = e => {
@@ -8,10 +8,12 @@ const Toggler =(props)=>{
       }
 
 return (
-    <React.Fragment>
-        <div className="form-check form-check-inline">
+    <div className="container">
+        <label className="radio radio-gradient">
+            <span className="radio-input">
             <input
-            class="form-check-input"
+            className="radio__control"
+            className="form-check-input"
             type="radio"
             name="degree-type"
             id="celsius"
@@ -19,21 +21,29 @@ return (
             checked={props.degreeType === "celsius"}
             onChange={updateForecastDegree}
             />
-            <label class="form-check-label" for="celsius">Celsius</label>
-        </div>
-        <div className="form-check form-check-inline">
+           
+            </span>
+
+            <span class="radio__label" for="celsius">Celsius</span>
+        </label>
+
+        <label className="radio radio-gradient">
+            <span className="radio-input">
             <input
             class="form-check-input"
             type="radio"
             name="degree-type"
-            id="fahrenheit"
+            id="celsius"
             value="fahrenheit"
             checked={props.degreeType === "fahrenheit"}
             onChange={updateForecastDegree}
             />
-            <label class="form-check-label" for="farenheit">Farenheit</label>
-        </div>
-    </React.Fragment>
+            
+            </span>
+
+            <span class="radio__label" for="fahrenheit">Fahrenheit</span>
+        </label>
+    </div>
   )
 }
 export default Toggler
