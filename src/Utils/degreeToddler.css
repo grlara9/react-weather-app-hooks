@@ -38,9 +38,9 @@
     display: flex;
   
     input {
-      opacity: 0
-      width: 0
-      height: 0
+      opacity: 0;
+      width: 0;
+      height: 0;
   
       &:focus + .radio__control {
         box-shadow: 0 0 0 0.05em #fff, 0 0 0.15em 0.1em currentColor;
