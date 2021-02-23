@@ -3,6 +3,7 @@ import axios from 'axios'
 import Form from '../../Utils/form'
 import Toggler from '../../Utils/degreeToddler'
 import DisplayWeather from '../../Utils/displayWeather'
+import ForecastList from '../../Utils/ForecastList'
 
 
 import { convertToFahrenheit } from '../../Utils/functions';
@@ -13,7 +14,10 @@ const Forecast = ()=>{
  
 
     const [inputText, setInputText] = useState('')
-    const [data, setData]= useState({})
+    const [data, setData]= useState([])
+    
+    
+
    const [degreeType, setDegreeType]=useState('fahrenheit')
 
     useEffect(()=> {
@@ -25,24 +29,29 @@ const Forecast = ()=>{
                 const api =`http://api.openweathermap.org/data/2.5/forecast?lat=${ position.coords.latitude}&lon=${position.coords.longitude}&appid=${KEY_API}`
                 axios.get(api)
                 .then(response =>{ 
-                console.log(response)
-                    setData({
-                        city: response.data.city.name,
-                        country:response.data.city.country,
-                        temperature:  response.data.list[0].main.temp,
-                        max: response.data.list[0].main.temp_max,
-                        min: response.data.list[0].main.temp_min,
-                        condition: response.data.list[0].description,
-                        icon: response.data.list[0].weather[0].icon
+                   console.log(response)
+                   setData({
+                       city: response.data.city.name,
+                       country:response.data.city.country,
+
+                       temperature:  response.data.list[0].main.temp,
+                       max: response.data.list[0].main.temp_max,
+                       min: response.data.list[0].main.temp_min,
+                       condition: response.data.list[0].description,
+                       icon: response.data.list[0].weather[0].icon,
+                      
                     })
                 }
-                    )
-                    .then(err => console.log(err))
-                })
-               
-            }
-    },[])
-   
+            )
+            
+            })
+        }
+       
+    },
+    
+    []);
+
+
    const getWeather = (e)=>{
         e.preventDefault()
         axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${inputText}&appid=${KEY_API}`)
@@ -59,6 +68,8 @@ const Forecast = ()=>{
         )
         .then(err => console.log(err))
     }
+
+   
 return (
     <div>
         <Form setInputText={setInputText} getWeather={getWeather}/>
@@ -72,7 +83,11 @@ return (
             condition={data.condition}
             icon={data.icon}
             degreeType={degreeType}
+           
         />
+
+        
+       
     </div>
 )}
  export default Forecast
