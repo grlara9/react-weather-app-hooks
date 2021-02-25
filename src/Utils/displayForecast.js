@@ -1,36 +1,29 @@
-import React from 'react'
-import moment from 'moment';
+import React from 'react';
+import {Card} from 'react-bootstrap';
 
-const DisplayForecast = ({listData}) => (
-
-    
-    
-    <div className="forecast__h">
-
-        {listData.map((day, index) => {
-						let dayNight = '';
-						if (
-							parseInt(moment(day.dt_txt).format('HH')) <= 6 ||
-							parseInt(moment(day.dt_txt).format('HH')) >= 19
-						) {
-							dayNight = 'night';
-						} else {
-							dayNight = 'day';
-						}
-						return (
-							<div key={index} className="forecast-cell">
-								<h5>{moment(day.dt_txt).format('ddd, hA')}</h5>
-								{dayNight === 'night' ? (
-									<i className={`wi wi-owm-night-${day.weather[0].id}`} />
-								) : (
-									<i className={`wi wi-owm-${day.weather[0].id}`} />
-								)}
-								<p>
-									<strong className="temp-text">{Math.round(day.main.temp)}&deg;</strong>
-								</p>
-							</div>
-						);
-					})}
-    </div>
-)
-export default DisplayForecast
+const DisplayForecast = ({dt, temp_min, temp_max, main, icon}) => {
+   
+  // create a date object with Date class constructor
+  const date = new Date(dt);
+  return (
+    <Card>
+      <Card.Img
+        variant="top"
+        // get the src from example url and pass the icon prop for icon code
+        src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
+      />
+      <Card.Body>
+        <Card.Title>{main}</Card.Title>
+        {/*  datetime is received in milliseconds, let's turn into local date time */}
+        <p>
+          {date.toLocaleDateString()} - {date.toLocaleTimeString()}
+        </p>
+        {/* minimum temperature */}
+        <p>Min: {temp_min}</p>
+        {/* maximum temperature */}
+        <p>Max: {temp_max}</p>
+      </Card.Body>
+    </Card>
+  );
+};
+export default DisplayForecast;

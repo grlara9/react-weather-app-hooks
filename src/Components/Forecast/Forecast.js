@@ -4,9 +4,11 @@ import Form from '../../Utils/form'
 import Toggler from '../../Utils/degreeToddler'
 import DisplayWeather from '../../Utils/displayWeather'
 import ForecastList from '../../Utils/ForecastList'
+import UseFetch from '../../Utils/useFetch'
 
 
 import { convertToFahrenheit } from '../../Utils/functions';
+import { SettingsApplicationsRounded } from '@material-ui/icons'
 
 const Forecast = ()=>{
    //const KEY_API='ce06c3f81e1990453b38833c502026cb';
@@ -15,10 +17,8 @@ const Forecast = ()=>{
 
     const [inputText, setInputText] = useState('')
     const [data, setData]= useState([])
-    
-    
-
-   const [degreeType, setDegreeType]=useState('fahrenheit')
+    const [degreeType, setDegreeType]=useState('fahrenheit')
+    const [list, setList] = useState(null)
 
     useEffect(()=> {
         if(navigator.geolocation){
@@ -33,7 +33,6 @@ const Forecast = ()=>{
                    setData({
                        city: response.data.city.name,
                        country:response.data.city.country,
-
                        temperature:  response.data.list[0].main.temp,
                        max: response.data.list[0].main.temp_max,
                        min: response.data.list[0].main.temp_min,
@@ -41,16 +40,27 @@ const Forecast = ()=>{
                        icon: response.data.list[0].weather[0].icon,
                       
                     })
-                }
-            )
+                })
             
             })
         }
-       
-    },
-    
-    []);
+    }, []);
 
+    useEffect(()=> {
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(position =>{
+              console.log("this is the position" + position.coords.latitude + position.coords.longitude)
+
+              const api =`http://api.openweathermap.org/data/2.5/forecast?lat=${ position.coords.latitude}&lon=${position.coords.longitude}&appid=${KEY_API}`
+            axios.get(api)
+            .then(response => {
+                console.log("this works", response)
+                setList(response)
+            })
+            
+            })
+        }
+    }, []);
 
    const getWeather = (e)=>{
         e.preventDefault()
@@ -85,6 +95,7 @@ return (
             degreeType={degreeType}
            
         />
+    {list && <ForecastList weathers={list.data.list}/>}
 
         
        
