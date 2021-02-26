@@ -1,8 +1,7 @@
 import React from 'react'
-import { Col, Row } from 'react-bootstrap'
 import DisplayForecast from './displayForecast'
 
-const ForecastList = ({weathers}) => {
+const ForecastList = ({weathers, degreeType}) => {
     console.log("hooa" , weathers)
     return (
         <div>
@@ -15,6 +14,7 @@ const ForecastList = ({weathers}) => {
                         dt={dt * 1000} 
                         main={weather[0].main} 
                         icon={weather[0].icon}/>
+                        degreeType={degreeType}
                 </div>
             )
             ):"not working"}

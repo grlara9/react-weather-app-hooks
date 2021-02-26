@@ -1,8 +1,9 @@
 import React from 'react';
-
+import { convertToFahrenheit } from './functions';
+import {  convertKelvinToCelsius } from './functions'
 import './displayForecast.css'
 
-const DisplayForecast = ({dt, temp_min, temp_max, main, icon}) => {
+const DisplayForecast = ({dt, temp_min, temp_max, main, icon, degreeType}) => {
    
   // create a date object with Date class constructor
   const date = new Date(dt);
@@ -23,10 +24,15 @@ const DisplayForecast = ({dt, temp_min, temp_max, main, icon}) => {
         <p>
           {date.toLocaleDateString()} - {date.toLocaleTimeString()}
         </p>
+
         {/* minimum temperature */}
-        <p>Min: {temp_min}</p>
+       
         {/* maximum temperature */}
-        <p>Max: {temp_max}</p>
+        
+
+        Min {degreeType === "celsius" ?  convertKelvinToCelsius(temp_min) +  "°C" : convertToFahrenheit(temp_min) + "°F"}
+                    <br /> 
+        Max {degreeType === "celsius" ?  convertKelvinToCelsius(temp_max) +  "°C" : convertToFahrenheit(temp_max) + "°F"}
       </div>
     </div>
     </div> 
