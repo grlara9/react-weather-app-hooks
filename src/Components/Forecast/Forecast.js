@@ -95,7 +95,10 @@ return (
             degreeType={degreeType}
            
         />
-    {list && <ForecastList weathers={list.data.list}/>}
+    {list && <ForecastList 
+    weathers={list.data.list}
+    degreeType={degreeType}
+    />}
 
         
        

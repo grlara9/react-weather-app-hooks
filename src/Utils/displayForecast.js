@@ -15,10 +15,10 @@ const DisplayForecast = ({dt, temp_min, temp_max, main, icon}) => {
         // get the src from example url and pass the icon prop for icon code
         src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
       />
-      <div className="card-body">
         <div className="card-title">
           {main}
         </div>
+      <div className="card-body">
         {/*  datetime is received in milliseconds, let's turn into local date time */}
         <p>
           {date.toLocaleDateString()} - {date.toLocaleTimeString()}
