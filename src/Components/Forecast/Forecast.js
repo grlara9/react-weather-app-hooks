@@ -79,10 +79,23 @@ const Forecast = ()=>{
         .then(err => console.log(err))
     }
 
+    const getForecast = (e) =>{
+        e.preventDefault();
+
+        axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${inputText}&appid=${KEY_API}`)
+        .then(response => {
+            console.log("work please", response)
+            setList(response)
+            
+        })
+        .then(err => console.log(err))
+    } 
+
    
+    
 return (
     <div>
-        <Form setInputText={setInputText} getWeather={getWeather}/>
+        <Form setInputText={setInputText} getWeather={getWeather} getForecast={getForecast}/>
         <Toggler setDegreeType={setDegreeType} degreeType={degreeType}/>
         <DisplayWeather 
             city= {data.city}
@@ -96,8 +109,8 @@ return (
            
         />
     {list && <ForecastList 
-    weathers={list.data.list}
-    degreeType={degreeType}
+        weathers={list.data.list}
+        
     />}
 
         
