@@ -5,11 +5,8 @@
   
 }
 body{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+ 
   background: #0F5474;
   color:#ffffff;
-  margin-top: 3rem;
-}
+  
+} 

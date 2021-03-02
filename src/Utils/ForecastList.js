@@ -2,11 +2,11 @@ import React from 'react'
 import DisplayForecast from './displayForecast'
 import { convertToFahrenheit } from './functions';
 import {  convertKelvinToCelsius } from './functions'
-
+import '../Components/Forecast.css'
 const ForecastList = ({weathers}) => {
     console.log("hooa" , weathers)
     return (
-        <div>
+        <div className="main-forecast">
            {weathers 
            ? weathers.slice(0,4).map(({dt,main, weather}) => (
               <div key={dt}>

@@ -5,7 +5,7 @@ import Toggler from '../../Utils/degreeToddler'
 import DisplayWeather from '../../Utils/displayWeather'
 import ForecastList from '../../Utils/ForecastList'
 import UseFetch from '../../Utils/useFetch'
-
+import '../Forecast.css'
 
 import { convertToFahrenheit } from '../../Utils/functions';
 import { SettingsApplicationsRounded } from '@material-ui/icons'
@@ -95,6 +95,7 @@ const Forecast = ()=>{
     
 return (
     <div>
+        <div className="main-weather">
         <Form setInputText={setInputText} getWeather={getWeather} getForecast={getForecast}/>
         <Toggler setDegreeType={setDegreeType} degreeType={degreeType}/>
         <DisplayWeather 
@@ -108,7 +109,10 @@ return (
             degreeType={degreeType}
            
         />
-    {list && <ForecastList 
+
+</div>
+
+    {list && <ForecastList  className="main-forecast"
         weathers={list.data.list}
         
     />}
