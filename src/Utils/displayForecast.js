@@ -7,7 +7,10 @@ const DisplayForecast = ({dt, temp_min, temp_max, main, icon, degreeType}) => {
    
   // create a date object with Date class constructor
   const date = new Date(dt);
+
+  
   return (
+    
    <div className="card-container">
 
     <div className="card">

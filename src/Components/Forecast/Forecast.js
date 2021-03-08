@@ -46,7 +46,17 @@ const Forecast = ()=>{
         }
     }, []);
 
-  
+    const getForecast = (e) =>{
+        e.preventDefault();
+
+        axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${inputText}&appid=${KEY_API}`)
+        .then(promise => {
+            console.log("work please", promise)
+            setData(promise)
+            
+        })
+        .then(err => console.log(err))
+    } 
     
     
 return (
@@ -69,6 +79,7 @@ return (
 </div>
 
     {data && <ForecastList  className="main-forecast"
+        degreeType={degreeType}
         weathers={data.list}
         
     />}
