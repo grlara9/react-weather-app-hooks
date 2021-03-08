@@ -4,17 +4,11 @@
     text-align: center;
     margin-top:10%;
   }
-  .weather-icon{
-    height: 40vh;
-    font-size: 25vh;
-    text-align: center;
-   }
+  
+  
 
-   .weather-icon img{
-    width: 100%;
-    height: auto;
-    
-   }
+   
+   
   .weather{
     display:flex;
     justify-content: space-around;
@@ -22,6 +16,11 @@
     
     
     
+  }
+
+  img{
+    width: 100%;
+    height: auto;
   }
   .main-weather{
     font-size: 15vh;

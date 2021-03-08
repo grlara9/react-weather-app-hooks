@@ -15,12 +15,12 @@
     color:black;
     display: flex;
 	flex-direction: column;
+    opacity: 0.9;
 }
 
-.card-img{
-    position:relative;
-    height: auto;
-    width: 150px;
+img{
+    width: 100%;
+  height: auto;
    
 }
 
@@ -36,3 +36,4 @@
     font-weight: bold;
     text-align: center;
 }
+

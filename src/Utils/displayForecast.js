@@ -15,7 +15,7 @@ const DisplayForecast = ({dt, temp_min, temp_max, main, icon, degreeType}) => {
 
     <div className="card">
       <img className="card-img"
-        variant="top"
+        
         // get the src from example url and pass the icon prop for icon code
         src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
       />

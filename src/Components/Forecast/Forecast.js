@@ -50,9 +50,18 @@ const Forecast = ()=>{
         e.preventDefault();
 
         axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${inputText}&appid=${KEY_API}`)
-        .then(promise => {
-            console.log("work please", promise)
-            setData(promise)
+        .then(response => {
+            console.log("work please", response)
+            setData({
+                    city: response.data.city.name,
+                    country:response.data.city.country,
+                    temperature:  response.data.list[0].main.temp,
+                    max: response.data.list[0].main.temp_max,
+                    min: response.data.list[0].main.temp_min,
+                    condition: response.data.list[0].description,
+                    icon: response.data.list[0].weather[0].icon,
+                    list: response.data.list
+            })
             
         })
         .then(err => console.log(err))
@@ -62,7 +71,7 @@ const Forecast = ()=>{
 return (
     <div>
         <div className="main-weather">
-        <Form setInputText={setInputText} />
+        <Form setInputText={setInputText} getForecast={getForecast} />
         <Toggler setDegreeType={setDegreeType} degreeType={degreeType}/>
         <DisplayWeather 
             city= {data.city}
