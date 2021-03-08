@@ -7,7 +7,7 @@ const Form = (props) => {
         props.setInputText(e.target.value)
     }
     return (
-        <form onSubmit={props.getWeather, props.getForecast}>
+        <form onSubmit={props.getWeather}>
             <input  
                 name="city" 
                 type="text"   

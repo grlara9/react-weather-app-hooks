@@ -18,8 +18,7 @@ const Forecast = ()=>{
     const [inputText, setInputText] = useState('')
     const [data, setData]= useState([])
     const [degreeType, setDegreeType]=useState('fahrenheit')
-    const [list, setList] = useState(null)
-
+   
     useEffect(()=> {
         if(navigator.geolocation){
             navigator.geolocation.getCurrentPosition(position =>{
@@ -38,7 +37,8 @@ const Forecast = ()=>{
                        min: response.data.list[0].main.temp_min,
                        condition: response.data.list[0].description,
                        icon: response.data.list[0].weather[0].icon,
-                      
+                       list: response.data.list
+                    
                     })
                 })
             
@@ -46,57 +46,13 @@ const Forecast = ()=>{
         }
     }, []);
 
-    useEffect(()=> {
-        if(navigator.geolocation){
-            navigator.geolocation.getCurrentPosition(position =>{
-              console.log("this is the position" + position.coords.latitude + position.coords.longitude)
-
-              const api =`http://api.openweathermap.org/data/2.5/forecast?lat=${ position.coords.latitude}&lon=${position.coords.longitude}&appid=${KEY_API}`
-            axios.get(api)
-            .then(response => {
-                console.log("this works", response)
-                setList(response)
-            })
-            
-            })
-        }
-    }, []);
-
-   const getWeather = (e)=>{
-        e.preventDefault()
-        axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${inputText}&appid=${KEY_API}`)
-        .then(response=> 
-            setData({
-                city: response.data.name,
-                country: response.data.sys.country,
-                temperature: response.data.main.temp,
-                max: response.data.main.temp_max,
-                min: response.data.main.temp_min,
-                condition: response.data.weather[0].description,
-                icon: response.data.weather[0].icon
-            })
-        )
-        .then(err => console.log(err))
-    }
-
-    const getForecast = (e) =>{
-        e.preventDefault();
-
-        axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${inputText}&appid=${KEY_API}`)
-        .then(response => {
-            console.log("work please", response)
-            setList(response)
-            
-        })
-        .then(err => console.log(err))
-    } 
-
-   
+  
+    
     
 return (
     <div>
         <div className="main-weather">
-        <Form setInputText={setInputText} getWeather={getWeather} getForecast={getForecast}/>
+        <Form setInputText={setInputText} />
         <Toggler setDegreeType={setDegreeType} degreeType={degreeType}/>
         <DisplayWeather 
             city= {data.city}
@@ -112,8 +68,8 @@ return (
 
 </div>
 
-    {list && <ForecastList  className="main-forecast"
-        weathers={list.data.list}
+    {data && <ForecastList  className="main-forecast"
+        weathers={data.list}
         
     />}
 
