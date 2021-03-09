@@ -17,15 +17,15 @@ const DisplayWeather =({city, country, icon, temperature, min, max, condition , 
             </div>
             <div className="weather">
                 <div className="main-weather">
-                <span className="temperature">{degreeType === "celsius" ?  convertKelvinToCelsius(temperature) +  "°C" : convertToFahrenheit(temperature) + "°F"}</span>
-            </div>
-            <div className="minmax">
-                <span className="min-max">
-                    Min {degreeType === "celsius" ?  convertKelvinToCelsius(min) +  "°C" : convertToFahrenheit(min) + "°F"}
-                    <br /> 
-                    Max {degreeType === "celsius" ?  convertKelvinToCelsius(max) +  "°C" : convertToFahrenheit(max) + "°F"}
-                </span>
-            </div>
+                    <span className="temperature">{degreeType === "celsius" ?  convertKelvinToCelsius(temperature) +  "°C" : convertToFahrenheit(temperature) + "°F"}</span>
+                </div>
+                <div className="minmax">
+                    <span className="min-max">
+                        Min {degreeType === "celsius" ?  convertKelvinToCelsius(min) +  "°C" : convertToFahrenheit(min) + "°F"}
+                        <br /> 
+                        Max {degreeType === "celsius" ?  convertKelvinToCelsius(max) +  "°C" : convertToFahrenheit(max) + "°F"}
+                    </span>
+                </div>
             </div>
             <div className="condition">
                 {condition}
