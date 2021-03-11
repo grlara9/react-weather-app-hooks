@@ -5,6 +5,7 @@ import Toggler from '../../Utils/degreeToddler'
 import DisplayWeather from '../../Utils/displayWeather'
 import ForecastList from '../../Utils/ForecastList'
 import UseFetch from '../../Utils/useFetch'
+import CloudOutlinedIcon from '@material-ui/icons/CloudOutlined';
 import '../Forecast.css'
 
 import { convertToFahrenheit } from '../../Utils/functions';
@@ -19,6 +20,7 @@ const Forecast = ()=>{
     const [data, setData]= useState([])
     const [degreeType, setDegreeType]=useState('fahrenheit')
    
+    console.log("this is the dataas", data)
     useEffect(()=> {
         if(navigator.geolocation){
             navigator.geolocation.getCurrentPosition(position =>{
@@ -35,7 +37,7 @@ const Forecast = ()=>{
                        temperature:  response.data.list[0].main.temp,
                        max: response.data.list[0].main.temp_max,
                        min: response.data.list[0].main.temp_min,
-                       condition: response.data.list[0].description,
+                       condition: response.data.list[0].weather[0].description,
                        icon: response.data.list[0].weather[0].icon,
                        list: response.data.list
                     
@@ -71,6 +73,7 @@ const Forecast = ()=>{
 return (
     <div>
         <div className="main-weather">
+        <h1 className="header"> <CloudOutlinedIcon /> Weather App</h1>
         <Form setInputText={setInputText} getForecast={getForecast} />
         <Toggler setDegreeType={setDegreeType} degreeType={degreeType}/>
         <DisplayWeather 
