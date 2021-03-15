@@ -7,8 +7,9 @@ const ForecastList = ({weathers}) => {
     console.log("hooa" , weathers)
     return (
         <div className="main-forecast">
+            
            {weathers 
-           ? weathers.slice(0,4).map(({dt,main, weather}) => (
+           ? weathers.slice(0,5).map(({dt,main, weather}) => (
               <div key={dt}>
                    
                   <DisplayForecast 

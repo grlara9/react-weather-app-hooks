@@ -33,9 +33,9 @@ const DisplayForecast = ({dt, temp_min, temp_max, main, icon, degreeType}) => {
         {/* maximum temperature */}
         
 
-        Min {degreeType === "celsius" ?  convertKelvinToCelsius(temp_min) +  "°C" : convertToFahrenheit(temp_min) + "°F"}
+        Min: {degreeType === "celsius" ?  convertKelvinToCelsius(temp_min) +  "°C" : convertToFahrenheit(temp_min) + "°F"}
                     <br /> 
-        Max {degreeType === "celsius" ?  convertKelvinToCelsius(temp_max) +  "°C" : convertToFahrenheit(temp_max) + "°F"}
+        Max: {degreeType === "celsius" ?  convertKelvinToCelsius(temp_max) +  "°C" : convertToFahrenheit(temp_max) + "°F"}
       </div>
     </div>
     </div> 
